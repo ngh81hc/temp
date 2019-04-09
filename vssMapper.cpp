@@ -82,6 +82,10 @@ void writeCAN(can_frame frame)
      
    /* Write date to CAN bus*/
    nbytes = write(s, &frame, sizeof(struct can_frame));
+   
+   cout << "[Info] Number of bytes to be sent: " << sizeof(struct can_frame) << endl;
+   cout << "[Info] Number of bytes sended: " << nbytes << endl;
+
    if(nbytes != sizeof(struct can_frame)) {
       cout << "[Info] Write data error!" << endl;
       return;
