@@ -118,7 +118,7 @@ void writeCAN(can_frame frame)
    /* Note: Read back data from another node/verify written data may required --> candump slcan0 */
    /* Close socket */
    c = close(s);
-   if(b == -1) {
+   if(c == -1) {
       cout << "[Info] Socket closed" << endl;
       return;
    }
