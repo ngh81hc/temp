@@ -119,11 +119,11 @@ void writeCAN(can_frame frame)
    /* Close socket */
    c = close(s);
    if(c == -1) {
-      cout << "[Info] Socket closed" << endl;
+      cout << "[Info] Cannot close socket!" << endl;
       return;
    }
    else{
-      cout << "[Info] Cannot close socket!" << endl;
+      cout << "[Info] Socket closed" << endl;
    }
   
    return;
