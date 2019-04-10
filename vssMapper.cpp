@@ -118,7 +118,7 @@ void writeCAN(can_frame frame)
 }
 
 string setRPM() {
-
+  cout << "\n[Info] -- Engine speed -- " << endl;
   string readBuf = readMode1Data("01 0C\r");
   cout << "[Info] Read buffer: " << readBuf << endl;
 
@@ -167,7 +167,7 @@ string setRPM() {
   
   UInt16 value = (A * 256 + B) / 4;
  
-  cout << "RPMread from the vehicle = "<< value << endl;
+  cout << "RPM read from the vehicle = "<< value << endl;
 
   json req = setRequest("Signal.OBD.RPM"); 
   req["value"] = value;
@@ -179,7 +179,7 @@ string setRPM() {
 }
 
 string setVehicleSpeed() {
-
+  cout << "\n[Info] -- Vehicle speed -- " << endl;
   string readBuf = readMode1Data("01 0D\r");
   cout << "[Info] Read buffer: " << readBuf << endl;
 
@@ -237,7 +237,7 @@ string setVehicleSpeed() {
 }
 
 string setFuelLevel() {
-
+  cout << "\n[Info] -- Fuel level -- " << endl;
   string readBuf = readMode1Data("01 2F\r");
   cout << "[Info] Read buffer: " << readBuf << endl;
 
