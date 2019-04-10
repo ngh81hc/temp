@@ -17,6 +17,13 @@
 #include"vssMapper.hpp"
 #include "actuatorTest.hpp"
 #include <json.hpp>
+/* Add related libraries for using Socket CAN */
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <functional>
+#include <unistd.h>
+#include <net/if.h>			
+#include "can-utils/include/linux/can.h"
 
 using namespace std;
 using namespace jsoncons;
@@ -48,6 +55,9 @@ void sendRequest(string command) {
 /* Open socket CAN */
 void openSocket() {
    int s, b, i;
+   struct sockaddr_can addr;
+   struct ifreq ifr;
+
    s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
    if(s == -1) {
       cout << "[Info] Open socket error!" << endl;
@@ -83,7 +93,7 @@ void openSocket() {
 /* Close socket CAN */
 void closeSocket() {
    int c;
-   c = close(s);
+   c = close(socket(PF_CAN, SOCK_RAW, CAN_RAW));
    if(c == -1) {
       cout << "[Info] Cannot close socket!" << endl;
       return;
@@ -230,7 +240,7 @@ void* startWSClient(void * arg) {
       cout << "Error creating DTC check thread"<<endl;
       return 1;
     }
-    
+
     /* Open socket CAN */
     openSocket();
   };
