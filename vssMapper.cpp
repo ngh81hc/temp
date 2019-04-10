@@ -187,11 +187,11 @@ string setVehicleSpeed() {
   /* Write CAN data */
   can_frame myCANframe;
   myCANframe.can_id = 0x3E9;
-  myCANframe.data[0] = 4;     // Len
   myCANframe.can_dlc = 8;
   myCANframe.__pad = 0;
   myCANframe.__res0 = 0;
   myCANframe.__res1 = 0;
+  myCANframe.data[0] = 4;     // Len
   myCANframe.data[1] = stoi (string(tokens[0]),nullptr,16);
   myCANframe.data[2] = stoi (string(tokens[1]),nullptr,16);
   myCANframe.data[3] = stoi (string(tokens[2]),nullptr,16);
@@ -245,11 +245,11 @@ string setFuelLevel() {
   /* Write CAN data */
   can_frame myCANframe;
   myCANframe.can_id = 0x3D9;
-  myCANframe.data[0] = 4;     // Len
   myCANframe.can_dlc = 8;
   myCANframe.__pad = 0;
   myCANframe.__res0 = 0;
   myCANframe.__res1 = 0;
+  myCANframe.data[0] = 4;     // Len
   myCANframe.data[1] = stoi (string(tokens[0]),nullptr,16);
   myCANframe.data[2] = stoi (string(tokens[1]),nullptr,16);
   myCANframe.data[3] = stoi (string(tokens[2]),nullptr,16);
