@@ -64,7 +64,7 @@ json setRequest(string path) {
 void writeCAN(can_frame frame)
 {
    /* Declaration */
-   int s, b, i, nbytes;
+   int s, b, i, c, nbytes;
    struct sockaddr_can addr;
    struct ifreq ifr;
    string input;
@@ -111,9 +111,21 @@ void writeCAN(can_frame frame)
       cout << "[Info] Write data error!" << endl;
       return;
    }
+   else {
+      cout << "[Info] Write data successfully!" << endl;
+   }
 
-   /* Note: Read back data from another node/verify written data may required */
-   cout << "[Info] Write data successfully!" << endl;
+   /* Note: Read back data from another node/verify written data may required --> candump slcan0 */
+   /* Close socket */
+   c = close(s);
+   if(b == -1) {
+      cout << "[Info] Socket closed" << endl;
+      return;
+   }
+   else{
+      cout << "[Info] Cannot close socket!" << endl;
+   }
+  
    return;
 }
 
