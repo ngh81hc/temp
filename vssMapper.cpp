@@ -64,7 +64,7 @@ json setRequest(string path) {
 void writeCAN(can_frame frame)
 {
    /* Declaration */
-   int s, nbytes;
+   int s, b, nbytes;
    struct sockaddr_can addr;
    struct ifreq ifr;
    string input;
