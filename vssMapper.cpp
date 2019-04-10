@@ -64,7 +64,7 @@ json setRequest(string path) {
 void writeCAN(can_frame frame)
 {
    /* Declaration */
-   int s, b, nbytes;
+   int s, b, i, nbytes;
    struct sockaddr_can addr;
    struct ifreq ifr;
    string input;
@@ -80,7 +80,14 @@ void writeCAN(can_frame frame)
    }
   
    strcpy(ifr.ifr_name, "slcan0" );
-   ioctl(s, SIOCGIFINDEX, &ifr);
+   i = ioctl(s, SIOCGIFINDEX, &ifr);
+   if(i == -1) {
+      cout << "[Info] Get interface name error!" << endl;
+      return;
+   }
+   else{
+      cout << "[Info] Interface name: " << ifr.ifr_name << endl;
+   }
    addr.can_family = AF_CAN;
    addr.can_ifindex = ifr.ifr_ifindex;
 
