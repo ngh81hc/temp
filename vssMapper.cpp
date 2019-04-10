@@ -71,15 +71,29 @@ void writeCAN(can_frame frame)
 
    /* Open socket for communicating over a CAN network with Raw socket protocol */
    s = socket(PF_CAN, SOCK_DGRAM, CAN_RAW);
-
+   if(s == -1) {
+      cout << "[Info] Open socket error!" << endl;
+      return;
+   }
+   else{
+      cout << "[Info] Open socket successfully!" << endl;
+   }
+  
    strcpy(ifr.ifr_name, "slcan0" );
    ioctl(s, SIOCGIFINDEX, &ifr);
    addr.can_family = AF_CAN;
    addr.can_ifindex = ifr.ifr_ifindex;
 
    /* Bind socket to CAN interfaces */
-   bind(s, (struct sockaddr *)&addr, sizeof(addr));
-     
+   b = bind(s, (struct sockaddr *)&addr, sizeof(addr));
+   if(b == -1) {
+      cout << "[Info] Bind socket error!" << endl;
+      return;
+   }
+   else{
+      cout << "[Info] Bind socket successfully!" << endl;
+   }
+  
    /* Write date to CAN bus*/
    nbytes = write(s, &frame, sizeof(struct can_frame));
    
