@@ -70,7 +70,7 @@ void writeCAN(can_frame frame)
    string input;
 
    /* Open socket for communicating over a CAN network with Raw socket protocol */
-   s = socket(PF_CAN, SOCK_DGRAM, CAN_RAW);
+   s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
    if(s == -1) {
       cout << "[Info] Open socket error!" << endl;
       return;
