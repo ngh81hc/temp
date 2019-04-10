@@ -70,36 +70,36 @@ void writeCAN(can_frame frame)
    string input;
 
    /* Open socket for communicating over a CAN network with Raw socket protocol */
-   s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
-   if(s == -1) {
-      cout << "[Info] Open socket error!" << endl;
-      return;
-   }
-   else{
-      cout << "[Info] Open socket successfully!" << endl;
-   }
+   // s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+   // if(s == -1) {
+   //    cout << "[Info] Open socket error!" << endl;
+   //    return;
+   // }
+   // else{
+   //    cout << "[Info] Open socket successfully!" << endl;
+   // }
   
-   strcpy(ifr.ifr_name, "slcan0" );
-   i = ioctl(s, SIOCGIFINDEX, &ifr);
-   if(i == -1) {
-      cout << "[Info] Get interface name error!" << endl;
-      return;
-   }
-   else{
-      cout << "[Info] Interface name: " << ifr.ifr_name << endl;
-   }
-   addr.can_family = AF_CAN;
-   addr.can_ifindex = ifr.ifr_ifindex;
+   // strcpy(ifr.ifr_name, "slcan0" );
+   // i = ioctl(s, SIOCGIFINDEX, &ifr);
+   // if(i == -1) {
+   //    cout << "[Info] Get interface name error!" << endl;
+   //    return;
+   // }
+   // else{
+   //    cout << "[Info] Interface name: " << ifr.ifr_name << endl;
+   // }
+   // addr.can_family = AF_CAN;
+   // addr.can_ifindex = ifr.ifr_ifindex;
 
-   /* Bind socket to CAN interfaces */
-   b = bind(s, (struct sockaddr *)&addr, sizeof(addr));
-   if(b == -1) {
-      cout << "[Info] Bind socket error!" << endl;
-      return;
-   }
-   else{
-      cout << "[Info] Bind socket successfully!" << endl;
-   }
+   // /* Bind socket to CAN interfaces */
+   // b = bind(s, (struct sockaddr *)&addr, sizeof(addr));
+   // if(b == -1) {
+   //    cout << "[Info] Bind socket error!" << endl;
+   //    return;
+   // }
+   // else{
+   //    cout << "[Info] Bind socket successfully!" << endl;
+   // }
   
    /* Write date to CAN bus*/
    nbytes = write(s, &frame, sizeof(struct can_frame));
@@ -117,14 +117,14 @@ void writeCAN(can_frame frame)
 
    /* Note: Read back data from another node/verify written data may required --> candump slcan0 */
    /* Close socket */
-   c = close(s);
-   if(c == -1) {
-      cout << "[Info] Cannot close socket!" << endl;
-      return;
-   }
-   else{
-      cout << "[Info] Socket closed" << endl;
-   }
+   // c = close(s);
+   // if(c == -1) {
+   //    cout << "[Info] Cannot close socket!" << endl;
+   //    return;
+   // }
+   // else{
+   //    cout << "[Info] Socket closed" << endl;
+   // }
   
    return;
 }
