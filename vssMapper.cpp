@@ -180,14 +180,15 @@ string setRPM() {
   UInt16 value = (A * 256 + B) / 4;
  
   cout << "RPM read from the vehicle = "<< value << endl;
-
-  json req = setRequest("Signal.OBD.RPM"); 
+  cout << "[Info] 1" << endl; // Debug
+  json req = setRequest("Signal.OBD.RPM");
+  cout << "[Info] 2" << endl; // Debug
   req["value"] = value;
   stringstream ss; 
   ss << pretty_print(req);
-  cout << "[Info] 1" << endl; // Debug
+  cout << "[Info] 3" << endl; // Debug
   string resp = ss.str();
-  cout << "[Info] 2" << endl; // Debug
+  cout << "[Info] 4" << endl; // Debug
   cout << resp << endl;
   return resp;
 }
@@ -241,13 +242,15 @@ string setVehicleSpeed() {
   Int32 value = A ;
  
   cout << "Vehicle speed read from the vehicle = "<< value << endl;
+  cout << "[Info] 1" << endl; // Debug
   json req = setRequest("Signal.OBD.Speed"); 
+  cout << "[Info] 2" << endl; // Debug
   req["value"] = value;
   stringstream ss; 
   ss << pretty_print(req);
-  cout << "[Info] 1" << endl; // Debug
+  cout << "[Info] 3" << endl; // Debug
   string resp = ss.str();
-  cout << "[Info] 2" << endl; // Debug
+  cout << "[Info] 4" << endl; // Debug
   cout << resp << endl; 
   return resp;
 }
@@ -301,13 +304,15 @@ string setFuelLevel() {
   Int32 value = A ;
  
   cout << "Fuel level read from the vehicle = "<< value << endl;
+  cout << "[Info] 1" << endl; // Debug
   json req = setRequest("Signal.OBD.FuelLevel"); 
+  cout << "[Info] 2" << endl; // Debug
   req["value"] = value;
   stringstream ss; 
   ss << pretty_print(req);
-  cout << "[Info] 1" << endl; // Debug
+  cout << "[Info] 3" << endl; // Debug
   string resp = ss.str();
-  cout << "[Info] 2" << endl; // Debug
+  cout << "[Info] 4" << endl; // Debug
   cout << resp << endl; 
   return resp;
 }
